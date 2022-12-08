@@ -1,9 +1,13 @@
 package com.skyway.entity;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 /*
 user table: name, role, username, password
@@ -14,8 +18,10 @@ request: req id,req owner name,req title, location,status,img, req assigned to, 
 
 @Entity
 public class User {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "user_id", unique = true)
+    private String userId;
 	
 	private String firstName;
 	
@@ -28,6 +34,17 @@ public class User {
 	private String email;
 	
 	private String aptUnit;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Login login;
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -75,6 +92,14 @@ public class User {
 
 	public void setAptUnit(String aptUnit) {
 		this.aptUnit = aptUnit;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 	
 }
