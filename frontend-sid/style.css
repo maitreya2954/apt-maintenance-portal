@@ -87,7 +87,7 @@ body {
     box-shadow: 1px 2px gray;
 }
 
-#login-container {
+#login-container, #contactus-container {
     display: flex;
     flex-direction: column;
     width: 32%;
@@ -133,4 +133,23 @@ body {
     background-color: rgba(54,74,94,1);
     color: rgba(235,235,235,1);
     font-weight: 500;
+}
+
+#aboutus-container {
+    display: flex;
+    flex-direction: column;
+    width: 52%;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.886);
+    padding: 10px;
+    color: rgb(58, 73, 92);
+    padding-top: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 20px;
+    
+}
+
+#aboutus-content {
+    text-align: center;
 }
