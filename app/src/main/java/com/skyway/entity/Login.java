@@ -13,30 +13,26 @@ import jakarta.persistence.OneToOne;
 public class Login {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-
-	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-	private User user;
+	@Column(name = "user_id", unique = true)
+	private String userId;
 	
 	private String password;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public Login() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	public User getUser() {
-		return user;
+	public Login(String userId, String pass) {
+		this.userId = userId;
+		this.password = pass;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {

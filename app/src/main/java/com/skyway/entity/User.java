@@ -1,5 +1,7 @@
 package com.skyway.entity;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,9 +36,6 @@ public class User {
 	private String email;
 	
 	private String aptUnit;
-	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Login login;
 	
 	public String getUserId() {
 		return userId;
@@ -92,14 +91,6 @@ public class User {
 
 	public void setAptUnit(String aptUnit) {
 		this.aptUnit = aptUnit;
-	}
-
-	public Login getLogin() {
-		return login;
-	}
-
-	public void setLogin(Login login) {
-		this.login = login;
 	}
 	
 }
