@@ -28,7 +28,7 @@ public class UserController {
 	@PostMapping(path = "/register")
 	public @ResponseBody User registerUser(@RequestParam String fname, @RequestParam String lname, 
 			@RequestParam String apt, @RequestParam String phone, @RequestParam String ssn, 
-			@RequestParam String email, @RequestParam String userId, @RequestParam String pass) {
+			@RequestParam String email, @RequestParam String userId, @RequestParam String pass, @RequestParam Integer role) {
 		User user = new User();
 		user.setUserId(userId);
 		user.setFirstName(fname);
@@ -37,6 +37,7 @@ public class UserController {
 		user.setPhoneNumber(phone);
 		user.setSsn(ssn);
 		user.setEmail(email);
+		user.setRole(role);
 		user = userRepository.save(user);
 		Login login = new Login(userId, pass);
 		loginRepository.save(login);
