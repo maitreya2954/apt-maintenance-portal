@@ -291,6 +291,7 @@ body {
     color: rgba(239, 239, 239, 1);
     border: 0;
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .info-box-divider {
@@ -469,4 +470,9 @@ body {
 
 .absolute {
     position: absolute;
+}
+
+#req-comment {
+    width: 70%;
+    height: 70%;
 }
