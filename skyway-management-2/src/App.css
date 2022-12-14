@@ -40,7 +40,6 @@ body {
 }
 
 #skywaylogo {
-  background-image: url('D:\skyway-management-2\src\pages\images\Screenshot_2022-11-24_at_90258.png');
     display: block;
     position: relative;
     left: 3%;
@@ -79,7 +78,7 @@ body {
 .page-body {
   position:absolute;
   top: 165px;
-    background-image: url('D:\skyway-management-2\src\pages\images\brandon-griggs-wR11KBaB86U-uns.png');
+    background-image: url('pages/images/brandon-griggs-wR11KBaB86U-uns.png');
     background-size: cover;
     display: flex;
     width: 100%;
