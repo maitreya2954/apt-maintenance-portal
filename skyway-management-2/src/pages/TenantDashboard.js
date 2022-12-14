@@ -9,6 +9,10 @@ class TenantDashboard extends React.Component
         fontWeight:700,
     
      }
+
+     var userId = localStorage.getItem('login-id'),
+        userDataJson = localStorage.getItem(userId + '-data'),
+        userData = JSON.parse(userDataJson);
    
      return(
 
@@ -27,7 +31,7 @@ class TenantDashboard extends React.Component
                     <span>Tenant Information</span>
                     <div class="info-box-row">
                         <span>First Name</span>
-                        <span>Tenant</span>
+                        <span>{userData.firstName}</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">

@@ -4,7 +4,8 @@ import { NavLink, Link } from "react-router-dom";
 class Header extends React.Component{
     render()
     {
-        return(isLoggedin() ? <LoginHeader/> : <HomeHeader/>);
+        var isLoggedOut = localStorage.getItem('login-id') === null  || localStorage.getItem('login-id') === undefined;
+        return(!isLoggedOut ? <LoginHeader/> : <HomeHeader/>);
     }
 }
 class HomeHeader extends React.Component {
@@ -56,17 +57,20 @@ class LoginHeader extends React.Component {
 
             <header>
                 <div class="page-header">
-            <img id="skywaylogo" src={require("images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
+            <img id="skywaylogo" src={require("../pages/images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
                             e.preventDefault();
                             window.location = "/";
                         }}/>
             <div class="portal-header-container">
-                <img src={require("images/icons8-notification-64.png")} alt="" onClick={(e) => {
+                <img src={require("../pages/images/icons8-notification-64.png")} alt="" onClick={(e) => {
                             e.preventDefault();
                             window.location = "/";
                         }}/>
-                <img src={require("images/icons8-power-off-button-100.png")} alt="" onClick={(e) => {
+                <img src={require("../pages/images/icons8-power-off-button-100.png")} alt="" onClick={(e) => {
                             e.preventDefault();
+                            var userId = localStorage.getItem('login-id');
+                            localStorage.removeItem('login-id');
+                            localStorage.removeItem(userId+'-data');
                             window.location = "/login";
                         }}/>
             </div>

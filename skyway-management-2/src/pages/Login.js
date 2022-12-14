@@ -24,7 +24,8 @@ class Login extends React.Component {
                         url: 'http://localhost:8080/portal/login?' + formdata,
                         type: 'GET',
                         success: (resp) => {
-                            localStorage.setItem(resp.username+'-data', resp);
+                            localStorage.setItem('login-id', resp.userId);
+                            localStorage.setItem(resp.userId+'-data', JSON.stringify(resp));
                             if (resp.role == 0) {
                                 window.location="/tenant";
                             } else if(resp.role == 1) {
