@@ -46,10 +46,14 @@ class TeamDashboard extends React.Component {
                         </div>
                         <div class="request-table-overflow">
                             {pendingrequests.map(req => {
-                                return (<div class="request-table-row">
+                                return (<div class="request-table-row" onClick={(e) => {
+                                    e.preventDefault();
+                                    window.location = '/tenant/viewrequest?reqId=' + req.requestId;
+                                }}>
                                     <div class="request-table-cell col1">{req.title}</div>
                                     <div class="request-table-cell col2">{formatDate(req.startMillis)}</div>
                                     <div class="request-table-cell col3">{req.status == 2 ? 'Pending' : 'Other'}</div>
+
                                 </div>);
                             })}
 
