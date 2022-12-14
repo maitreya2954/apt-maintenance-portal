@@ -37,6 +37,8 @@ public class User {
 	
 	private String aptUnit;
 	
+	private int role;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -91,6 +93,14 @@ public class User {
 
 	public void setAptUnit(String aptUnit) {
 		this.aptUnit = aptUnit;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 	
 }
