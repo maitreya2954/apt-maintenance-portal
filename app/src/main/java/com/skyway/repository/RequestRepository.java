@@ -10,4 +10,6 @@ import com.skyway.entity.Request;
 @Repository
 public interface RequestRepository extends CrudRepository<Request, Long> {
 	public Iterable<Request> findByUserId(String userId);
+	
+	public Iterable<Request> findByStatus(Integer status);
 }
