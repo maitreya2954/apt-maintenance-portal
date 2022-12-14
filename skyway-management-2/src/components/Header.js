@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-class Header extends React.Component {
+class Header extends React.Component{
+    render()
+    {
+        return(isLoggedin() ? <LoginHeader/> : <HomeHeader/>);
+    }
+}
+class HomeHeader extends React.Component {
 
 
     render() {
