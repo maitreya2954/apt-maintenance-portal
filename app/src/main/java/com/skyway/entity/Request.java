@@ -20,6 +20,8 @@ public class Request {
 	private long startMillis;
 	
 	private long endMillis;
+	
+	private String desc;
 
 	//TODO: Implement image storing
 	
@@ -69,6 +71,14 @@ public class Request {
 
 	public void setEndMillis(long endMillis) {
 		this.endMillis = endMillis;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 	

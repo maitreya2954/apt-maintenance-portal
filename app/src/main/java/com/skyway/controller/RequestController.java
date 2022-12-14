@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.skyway.entity.Request;
 import com.skyway.repository.RequestRepository;
 
+@CrossOrigin
 @Controller
 @RequestMapping(path = "/request")
 public class RequestController {
@@ -22,12 +24,14 @@ public class RequestController {
 	RequestRepository requestRepository;
 	
 	@PostMapping(path = "/create")
-	public @ResponseBody Request addRequest(@RequestParam String userId, @RequestParam Integer location, @RequestParam Integer status) {
+	public @ResponseBody Request addRequest(@RequestParam String userId, @RequestParam Integer location, 
+			@RequestParam Integer status, @RequestParam String desc) {
 		Request request = new Request();
 		request.setUserId(userId);
 		request.setStatus(status);
 		request.setLocation(location);
 		request.setStartMillis(System.currentTimeMillis());
+		request.setDesc(desc);
 		requestRepository.save(request);
 		return request;
 	}
