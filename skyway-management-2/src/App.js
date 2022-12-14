@@ -8,9 +8,11 @@ import ManagerDashboard from "./pages/ManagerDashboard"
 import TeamDashboard from "./pages/TeamDashboard"
 import NewRequest from "./pages/NewRequest"
 import Header from "./components/Header"
+import RequestStatusUpdate from "./pages/RequestStatusUpdate"
 import './App.css';
 
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
+
 function App() {
   return (
    <Router>
@@ -18,6 +20,7 @@ function App() {
     
     <Routes>
     <Route path='/team' element={<TeamDashboard/>}/>
+    <Route path='/team/requestview' element={<RequestStatusUpdate/>}/>
     <Route path='/' element={<Home/>}/>
     <Route path='/newrequest' element={<NewRequest/>}/> 
    <Route path='/login' element={<Login/>}/>
