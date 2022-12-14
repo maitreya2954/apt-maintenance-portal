@@ -21,7 +21,9 @@ public class Request {
 	
 	private long endMillis;
 	
-	private String desc;
+	private String description;
+	
+	private String title;
 
 	//TODO: Implement image storing
 	
@@ -74,11 +76,19 @@ public class Request {
 	}
 
 	public String getDesc() {
-		return desc;
+		return description;
 	}
 
 	public void setDesc(String desc) {
-		this.desc = desc;
+		this.description = desc;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	
