@@ -33,7 +33,7 @@ class TenantDashboard extends React.Component
             }}>Request History</div>
         </div>
         <div class="body-main tenant-body">
-            <span  class="body-heading">Welcome, "Tenant Name"</span>
+            <span  class="body-heading">Welcome, Tenant</span>
             <div id="info-container">
                 
                 <div class="info-box">
@@ -45,22 +45,22 @@ class TenantDashboard extends React.Component
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
                         <span>Last Name</span>
-                        <span>Tenant</span>
+                        <span>{userData.lastName}</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
                         <span>Phone</span>
-                        <span>(717) 634-9999</span>
+                        <span>{userData.phoneNumber}</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
                         <span>Email</span>
-                        <span>tenant@gmail.com</span>
+                        <span>{userData.email}</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
                         <span>SSN</span>
-                        <span>xxx-xx-1234</span>
+                        <span>{userData.ssn}</span>
                     </div>
                     <button>Edit Details</button>
                 </div>
@@ -68,12 +68,12 @@ class TenantDashboard extends React.Component
                     <span>Property Information</span>
                     <div class="info-box-row">
                         <span>Apartment</span>
-                        <span>XYZ Apartment</span>
+                        <span>Skyway Apartments</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
                         <span>Unit</span>
-                        <span>201</span>
+                        <span>{userData.aptUnit}</span>
                     </div>
                     <div class="info-box-divider"></div>
                     <div class="info-box-row">
