@@ -12,7 +12,10 @@ class Header extends React.Component {
 
             <header>
                 <div className="page-header">
-                    <img id="skywaylogo" src={require("../pages/images/Screenshot_2022-11-24_at_90258.png")} />
+                    <img id="skywaylogo" src={require("../pages/images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
+                            e.preventDefault();
+                            window.location = "/";
+                        }} />
                     <div className="header-button-container">
 
                         <button className="headerbutton" onClick={(e) => {
@@ -31,6 +34,37 @@ class Header extends React.Component {
 
                     </div>
                 </div>
+            </header>
+        );
+    }
+}
+
+class LoginHeader extends React.Component {
+
+
+    render() {
+
+
+        return (
+
+
+            <header>
+                <div class="page-header">
+            <img id="skywaylogo" src={require("images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
+                            e.preventDefault();
+                            window.location = "/";
+                        }}/>
+            <div class="portal-header-container">
+                <img src={require("images/icons8-notification-64.png")} alt="" onClick={(e) => {
+                            e.preventDefault();
+                            window.location = "/";
+                        }}/>
+                <img src={require("images/icons8-power-off-button-100.png")} alt="" onClick={(e) => {
+                            e.preventDefault();
+                            window.location = "/login";
+                        }}/>
+            </div>
+        </div>
             </header>
         );
     }
