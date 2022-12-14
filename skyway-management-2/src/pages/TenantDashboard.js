@@ -19,9 +19,18 @@ class TenantDashboard extends React.Component
     
     <div class="page-body no-background">
         <div class="sidebar">
-            <div class="sidebar-tab sidebar-current">Dashboard</div>
-            <div class="sidebar-tab">Add New Request</div>
-            <div class="sidebar-tab">Request History</div>
+            <div class="sidebar-tab sidebar-current" onClick={(e) => {
+                e.preventDefault();
+                window.location = '/tenant';
+            }}>Dashboard</div>
+            <div class="sidebar-tab" onClick={(e) => {
+                e.preventDefault();
+                window.location = '/newrequest';
+            }}>Add New Request</div>
+            <div class="sidebar-tab" onClick={(e) => {
+                e.preventDefault();
+                window.location = '/tenant';
+            }}>Request History</div>
         </div>
         <div class="body-main tenant-body">
             <span  class="body-heading">Welcome, "Tenant Name"</span>
