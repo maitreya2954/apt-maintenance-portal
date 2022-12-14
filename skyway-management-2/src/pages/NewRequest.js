@@ -1,4 +1,5 @@
 import React from "react";
+import $ from 'jquery';
 
 class NewRequest extends React.Component
 {
@@ -22,14 +23,28 @@ class NewRequest extends React.Component
         </div>
     <div class="body-main tenant-body">
         <span class="body-heading">Create new maintenance request</span>
-        <form id="request-form">
+        <form id="request-form" onSubmit={(e) => {
+            e.preventDefault();
+            var inputs = document.getElementsByTagName("input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = false;
+            }
+            var formdata = $('#request-form').serialize();
+            $.ajax({
+                url: 'http://localhost:8080/request/create?userId=' + localStorage.getItem('login-id') + '&' + formdata,
+                type: 'POST',
+                success: (resp) => {
+                    $('.request-popup').addClass('unhide');
+                }
+            });
+        }}>
                 <div class="sub-form-container">
                     <span>Title</span>
-                    <input type="text"/>
+                    <input type="text" name="title"/>
                 </div>
                 <div class="sub-form-container">
                     <span>Location</span>
-                    <select id="select-location">
+                    <select id="select-location" name="location">
                         <option value="0">Living Area</option>
                         <option value="1">Bathroom</option>
                         <option value="2">Kitchen</option>
@@ -47,6 +62,10 @@ class NewRequest extends React.Component
                     <input type="file" name="attachment" id="req-attachment"/>
                 </div>
                 <input type="submit" value="Submit"/>
+                <div className="request-popup">
+                    Successful
+                    <button onClick={(e) => {$('.request-popup').removeClass('unhide')}}>OK</button> 
+                </div>
         </form>
         
     </div>

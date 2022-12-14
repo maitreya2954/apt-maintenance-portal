@@ -1,5 +1,7 @@
 package com.skyway.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,8 +46,27 @@ public class RequestController {
 		return requestRepository.findAll();
 	}
 	
-	@GetMapping(path="/pending")
-	public @ResponseBody Iterable<Request> getPendingRequests() {
+	@GetMapping(path="/allpending")
+	public @ResponseBody Iterable<Request> getAllPendingRequests() {
 		return requestRepository.findByStatus(2);
+	}
+	
+	@GetMapping(path="/pending")
+	public @ResponseBody Iterable<Request> getPendingRequests(@RequestParam String teamId) {
+		return requestRepository.findByStatusAndResolvedBy(2, teamId);
+	}
+	
+	@PostMapping(path="/update")
+	public @ResponseBody Request updateRequest(@RequestParam Long reqId, @RequestParam String teamId, @RequestParam Integer status, @RequestParam String comments) {
+		Optional<Request> requestOpt = requestRepository.findById(reqId);
+		if (requestOpt.isPresent()) {
+			Request request = requestOpt.get();
+			request.setCommentByTeam(comments);
+			request.setStatus(status);
+			request.setResolvedBy(teamId);
+			requestRepository.save(request);
+			return request;
+		}
+		return null;
 	}
 }

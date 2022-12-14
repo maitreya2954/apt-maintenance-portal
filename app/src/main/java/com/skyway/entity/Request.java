@@ -13,6 +13,8 @@ public class Request {
 	
 	private String userId;
 	
+	private String resolvedBy;
+	
 	private int location;
 	
 	private int status;
@@ -24,6 +26,8 @@ public class Request {
 	private String description;
 	
 	private String title;
+	
+	private String commentByTeam;
 
 	//TODO: Implement image storing
 	
@@ -89,6 +93,30 @@ public class Request {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getResolvedBy() {
+		return resolvedBy;
+	}
+
+	public void setResolvedBy(String resolvedBy) {
+		this.resolvedBy = resolvedBy;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCommentByTeam() {
+		return commentByTeam;
+	}
+
+	public void setCommentByTeam(String commentByTeam) {
+		this.commentByTeam = commentByTeam;
 	}
 	
 	
