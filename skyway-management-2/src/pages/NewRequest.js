@@ -33,6 +33,7 @@ class NewRequest extends React.Component {
                             type: 'POST',
                             success: (resp) => {
                                 $('.request-popup').addClass('unhide');
+                                $('#request-form')[0].reset();
                             }
                         });
                     }}>
