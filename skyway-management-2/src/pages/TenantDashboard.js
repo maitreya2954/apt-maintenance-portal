@@ -4,11 +4,7 @@ class TenantDashboard extends React.Component
 {
     render()
    {
-     const styleObj1 = {
-        fontSize: 40,
-        fontWeight:700,
-    
-     }
+     
 
      var userId = localStorage.getItem('login-id'),
         userDataJson = localStorage.getItem(userId + '-data'),

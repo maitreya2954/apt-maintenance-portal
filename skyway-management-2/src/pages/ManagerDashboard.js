@@ -6,20 +6,25 @@ class ManagerDashboard extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
-                startDate: new Date()
+              startDate:null,
+              endDate:null,
+              agreement: false
             };
-            this.handleChange = this.handleChange.bind(this);
-            this.onFormSubmit = this.onFormSubmit.bind(this);
         }
-    handleChange(date) {
-        this.setState({
-            startDate: date
-        })
-    }
-    onFormSubmit(e) {
-        e.preventDefault();
-        //console.log(this.state.startDate)
-    }
+
+         handleStartDate = (date) => {
+            this.setState({startDate: date})
+            
+          };
+        
+         handleEndDate = (date) => {
+            this.setState({endDate: date})
+            
+          };
+    
+
+    handleChange = e => this.setState({ agreement: e.target.checked });
+    
 
     render() {
         const styleObj1 = {
@@ -37,28 +42,41 @@ class ManagerDashboard extends React.Component {
                 <div class="body-main tenant-body">
                     <span class="body-heading no-padding">Welcome, Manager</span>
                     <div className="filters">
-                        <form onSubmit={this.onFormSubmit}>
-                            <div className="form-group"><DatePicker
+                    <span >Start Date</span>
+
+                        
+                            <div className="form-group1"><DatePicker
+                            id="startdate"
                                 selected={this.state.startDate}
-                                onChange={this.handleChange}
+                                onChange={this.handleStartDate}
                                 name="startDate"
                                 dateFormat="MM/dd/yyyy"
                             />
                             </div>
-                        </form>
-                        <span >Start Date</span>
-
-                        <form onSubmit={this.onFormSubmit}>
-                            <div className="form-group"><DatePicker
-                                selected={this.state.startDate}
-                                onChange={this.handleChange}
+                        
+                        <span >End Date</span>
+                        
+                            <div className="form-group2"><DatePicker
+                            id="enddate"
+                                selected={this.state.endDate}
+                                onChange={this.handleEndDate}
                                 name="startDate"
                                 dateFormat="MM/dd/yyyy"
                             />
                             </div>
 
-                        </form>
-                        <span>End Date</span>
+                        
+                        
+        <div>
+          <label>
+            <input type="checkbox" 
+              checked={this.state.agreement} 
+              onChange={this.handleChange} />
+            <span>Closed requests</span>
+          </label>
+        </div>
+
+      
                     </div>
 
                     <div class="request-table height-70percent">
