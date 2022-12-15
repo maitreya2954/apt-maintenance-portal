@@ -52,7 +52,7 @@ class TeamDashboard extends React.Component {
                                 }}>
                                     <div class="request-table-cell col1">{req.title}</div>
                                     <div class="request-table-cell col2">{formatDate(req.startMillis)}</div>
-                                    <div class="request-table-cell col3">{req.status == 2 ? 'Pending' : 'Other'}</div>
+                                    <div className={req.status == 2 ? "request-table-cell col3 bck-red" : "request-table-cell col3 bck-green"}>{req.status == 2 ? 'Pending' : 'Closed'}</div>
 
                                 </div>);
                             })}
