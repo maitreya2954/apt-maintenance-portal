@@ -1,32 +1,44 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import $ from 'jquery';
 
 class ManagerDashboard extends React.Component {
-        constructor(props) {
-            super(props)
-            this.state = {
-                startDate: new Date()
-            };
-            this.handleChange = this.handleChange.bind(this);
-            this.onFormSubmit = this.onFormSubmit.bind(this);
-        }
-    handleChange(date) {
-        this.setState({
-            startDate: date
-        })
-    }
-    onFormSubmit(e) {
-        e.preventDefault();
-        //console.log(this.state.startDate)
-    }
+
 
     render() {
+        function padTo2Digits(num) {
+            return num.toString().padStart(2, '0');
+        }
+        function formatDate(millis) {
+            var date = new Date(millis);
+            return [
+                padTo2Digits(date.getMonth() + 1),
+                padTo2Digits(date.getDate()),
+                date.getFullYear(),
+            ].join('/');
+        }
         const styleObj1 = {
             fontSize: 40,
             fontWeight: 700,
 
         }
+
+        var requests = [],
+            filteredrequests = [];
+        $.ajax({
+            url: 'http://localhost:8080/request/all',
+            type: 'GET',
+            async: false,
+            success: (resp) => {
+                requests = resp;
+                for (const req of resp) {
+                    if (req.status === 2) {
+                        filteredrequests.push(req);
+                    }
+                }
+            }
+        });
 
         return (
 
@@ -37,28 +49,36 @@ class ManagerDashboard extends React.Component {
                 <div class="body-main tenant-body">
                     <span class="body-heading no-padding">Welcome, Manager</span>
                     <div className="filters">
-                        <form onSubmit={this.onFormSubmit}>
-                            <div className="form-group"><DatePicker
-                                selected={this.state.startDate}
-                                onChange={this.handleChange}
-                                name="startDate"
-                                dateFormat="MM/dd/yyyy"
-                            />
-                            </div>
+                        <form onChange={(e) => {
+                            console.log('Changed formed');
+                            filteredrequests = [];
+                            var startstring = document.getElementById('startdate').value,
+                                endstring = document.getElementById('enddate').value;
+                            var startpresent = startstring || startstring.length !== 0,
+                                endpresent = endstring || endstring.length !== 0;
+                            var startDate = !startstring || startstring.length === 0 ? new Date().getTime() : new Date($('#startdate').value).getTime(),
+                                endDate = !endstring || endstring.length === 0 ? new Date().getTime() : new Date($('#enddate').value).getTime(),
+                                endDate = endDate + 864000000,
+                                checkboxChecked = document.getElementById('reqcheckbox').checked;
+                            for (const req of requests) {
+                                var includeReq = true;
+                                if ((req.status === 3 && !checkboxChecked) ||
+                                    ((startpresent && endpresent) && (req.startMillis < new Date(startstring).getTime() || req.startMillis > new Date(endstring).getTime() +  864000000))) {
+                                    includeReq = false;
+                                }
+                                if (includeReq) {
+                                    filteredrequests.push(req);
+                                }
+                            }
+                            console.log(filteredrequests);
+                        }}>
+                            <span>Start Date</span>
+                            <input type="date" id="startdate" name="startdate" />
+                            <span>End Date</span>
+                            <input type="date" id="enddate" name="enddate" />
+                            <input type="checkbox" id="reqcheckbox" name="reqcheckbox" />
+                            <span>Show closed requests</span>
                         </form>
-                        <span >Start Date</span>
-
-                        <form onSubmit={this.onFormSubmit}>
-                            <div className="form-group"><DatePicker
-                                selected={this.state.startDate}
-                                onChange={this.handleChange}
-                                name="startDate"
-                                dateFormat="MM/dd/yyyy"
-                            />
-                            </div>
-
-                        </form>
-                        <span>End Date</span>
                     </div>
 
                     <div class="request-table height-70percent">
@@ -68,48 +88,13 @@ class ManagerDashboard extends React.Component {
                             <div class="request-table-cell col3 white-bck-color">Type</div>
                         </div>
                         <div class="request-table-overflow">
-                            <div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div>
-                            <div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div><div class="request-table-row">
-                                <div class="request-table-cell col1">Title1</div>
-                                <div class="request-table-cell col2">Date1</div>
-                                <div class="request-table-cell col3">Status1</div>
-                            </div>
+                            {filteredrequests.map(req => {
+                                return (<div class="request-table-row">
+                                    <div class="request-table-cell col1">{req.title}</div>
+                                    <div class="request-table-cell col2">{formatDate(req.startMillis)}</div>
+                                    <div class="request-table-cell col3">{req.status == 2 ? 'Pending' : 'Closed'}</div>
+                                </div>);
+                            })}
                         </div>
                     </div>
                 </div>
