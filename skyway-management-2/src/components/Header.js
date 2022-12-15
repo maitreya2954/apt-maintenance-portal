@@ -16,8 +16,6 @@ class HomeHeader extends React.Component {
         
 
         return (
-
-
             <header>
                 <div className="page-header">
                     <img id="skywaylogo" src={require("../pages/images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
