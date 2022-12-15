@@ -239,6 +239,9 @@ body {
     color: rgb(58, 73, 92);
 }
 
+.filters {
+
+}
 .no-padding {
     padding: 0;
 }
@@ -469,4 +472,13 @@ body {
 
 .absolute {
     position: absolute;
+}
+
+.filters {
+    background-color: red;
+    width: 85%;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-evenly;
 }
