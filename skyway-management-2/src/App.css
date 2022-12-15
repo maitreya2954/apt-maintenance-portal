@@ -472,6 +472,10 @@ body {
     justify-content: center;
 }
 
+.request-popup > * {
+    margin: 10px;
+}
+
 .unhide {
     display: flex;
 }
