@@ -36,7 +36,7 @@ public class RequestController {
 		return request;
 	}
 	
-	@GetMapping(path="/id")
+	@GetMapping(path="/userid")
 	public  @ResponseBody Iterable<Request> getRequest(@RequestParam String userId) {
 		return requestRepository.findByUserId(userId);
 	}
@@ -57,16 +57,21 @@ public class RequestController {
 	}
 	
 	@PostMapping(path="/update")
-	public @ResponseBody Request updateRequest(@RequestParam Long reqId, @RequestParam String teamId, @RequestParam Integer status, @RequestParam String comments) {
+	public @ResponseBody Request updateRequest(@RequestParam Long reqId, @RequestParam String teamId, @RequestParam Integer status, @RequestParam String comment) {
 		Optional<Request> requestOpt = requestRepository.findById(reqId);
 		if (requestOpt.isPresent()) {
 			Request request = requestOpt.get();
-			request.setCommentByTeam(comments);
+			request.setCommentByTeam(comment);
 			request.setStatus(status);
 			request.setResolvedBy(teamId);
 			requestRepository.save(request);
 			return request;
 		}
 		return null;
+	}
+	
+	@GetMapping(path="/id")
+	public  @ResponseBody Optional<Request> getRequest(@RequestParam Long reqId) {
+		return requestRepository.findById(reqId);
 	}
 }

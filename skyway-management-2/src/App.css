@@ -294,6 +294,7 @@ body {
     color: rgba(239, 239, 239, 1);
     border: 0;
     border-radius: 25px;
+    cursor: pointer;
 }
 
 .info-box-divider {
@@ -472,13 +473,4 @@ body {
 
 .absolute {
     position: absolute;
-}
-
-.filters {
-    background-color: red;
-    width: 85%;
-    display: flex;
-    height: 60px;
-    align-items: center;
-    justify-content: space-evenly;
 }

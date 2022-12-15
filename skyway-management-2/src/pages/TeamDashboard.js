@@ -48,10 +48,7 @@ class TeamDashboard extends React.Component {
                             {pendingrequests.map(req => {
                                 return (<div class="request-table-row" onClick={(e) => {
                                     e.preventDefault();
-                                    this.props.navigation.navigate('/team/requestview', {
-                                        reqId:1
-                                    })
-                                    window.location = '/team/requestview?reqId=1';
+                                    window.location = '/team/requestview?reqId=' + req.requestId;
                                 }}>
                                     <div class="request-table-cell col1">{req.title}</div>
                                     <div class="request-table-cell col2">{formatDate(req.startMillis)}</div>

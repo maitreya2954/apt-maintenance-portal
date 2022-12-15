@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 class Header extends React.Component{
     render()
     {
+        
         var isLoggedOut = localStorage.getItem('login-id') === null  || localStorage.getItem('login-id') === undefined;
         return(!isLoggedOut ? <LoginHeader/> : <HomeHeader/>);
     }
@@ -12,7 +13,7 @@ class HomeHeader extends React.Component {
 
 
     render() {
-
+        
 
         return (
 
@@ -59,6 +60,12 @@ class LoginHeader extends React.Component {
                 <div class="page-header">
             <img id="skywaylogo" src={require("../pages/images/Screenshot_2022-11-24_at_90258.png")} onClick={(e) => {
                             e.preventDefault();
+                            var login_info = localStorage.getItem('login-id');
+                            console.log('Login detected: ' + login_info);
+                            if (login_info) {
+                                localStorage.removeItem('login-id');
+                                localStorage.removeItem(login_info+'-data');
+                            }
                             window.location = "/";
                         }}/>
             <div class="portal-header-container">
