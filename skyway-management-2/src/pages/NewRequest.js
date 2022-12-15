@@ -64,7 +64,7 @@ class NewRequest extends React.Component
                 <input type="submit" value="Submit"/>
                 <div className="request-popup">
                     Successful
-                    <button onClick={(e) => {$('.request-popup').removeClass('unhide')}}>OK</button> 
+                    <button onClick={(e) => {$(".request-popup").removeClass('unhide')}}>OK</button> 
                 </div>
         </form>
         

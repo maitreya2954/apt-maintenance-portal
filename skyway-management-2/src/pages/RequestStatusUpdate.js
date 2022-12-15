@@ -70,7 +70,7 @@ class RequestStatusUpdate extends React.Component {
                             <div class="info-box-divider"></div>
                             <div class="info-box-row">
                                 <span>Status</span>
-                                <span>{getStatus(request.status)}</span>
+                                <span className={request.status == 2 ? "bck-red" : "bck-green"}>{getStatus(request.status)}</span>
                             </div>
                             <div class="info-box-divider"></div>
                             <div class="info-box-row">
