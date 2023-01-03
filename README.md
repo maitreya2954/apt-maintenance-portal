@@ -52,4 +52,8 @@ When a team member clicks on an active request, the system will take the user to
 
 **Database Connection Error:** If the system can not connect to the database server in time, it will display a “Connection Error” message to the user and keep them on that maintenance request page. A message will also be sent to the manager to notify them of the database going down.
 
+## Database
+
+![ER Diagram](https://github.com/maitreya2954/apt-maintenance-portal/blob/main/ERDiagram.png)
+
 
